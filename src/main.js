@@ -21,11 +21,13 @@ $(document).ready(function () {
 
         console.log(response);
         
+        $("#strBar").css("width", `${response.powerstats.strength}%`);
+
         $("#powers").append("Power Statistics:")
         $("#heroID").append(`${response.name}`);
         $("#heroN").append(`Secret Identity: ${response.biography.fullName}`);
-        $("#str").append(`Strength: ${response.powerstats.strength}`);
-        $("#int").append(`Intelligence: ${response.powerstats.intelligence}`);
+        $("#strBar").css("width", `${response.powerstats.strength}%`);
+        $("#intBar").css("width", `${response.powerstats.intelligence}%`);
         $("#com").append(`Combat Prowess: ${response.powerstats.combat}`);
         $("#dur").append(`Durability: ${response.powerstats.durability}`);
         $("#sp").append(`Speed: ${response.powerstats.speed}`);
