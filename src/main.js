@@ -13,11 +13,29 @@ $(document).ready(function () {
     })();
 
     function getElements(response) {
+      
+      
+      
+      // let allData = JSON.stringify(response);
+      // let test = JSON.parse(response.responseText);
+     
+       
       if (response) {
-        $("#hero-info").html(response);
-      } else {
-        $("#hero-info").html("error");
-      }
+        $("#output").html("");
+       
+        console.log(response);
+         
+        $("#output").append(`<p> name: ${response.biography.fullName}</p><br>`);
+        $("#output").append(`<p> powerstats: ${response.powerstats.strength}</p><br>`);
+            // $("#output").append("<p>" +  + ": " +  + "</p><br>")
+            // $("#output").append("<p>" + element[0] + ": " + element[1] + "</p><br>")
+          // $("#hero-info").html(test);
+        
+        } else {
+          $("#hero-info").html("error");
+        }
+      
     }
   });
 });
+// response.name
