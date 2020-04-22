@@ -1,5 +1,7 @@
+import 'bootstrap';
 import { SuperHero } from './../src/superhero.js';
 import $ from 'jquery';
+import './style.css';
 
 $(document).ready(function () {
   $("#form").submit(function (event) {
@@ -10,45 +12,42 @@ $(document).ready(function () {
       let hero = new SuperHero();
       const response = await hero.getSuperHeroInfo(name);
       getElements(response);
+      $(".card").show();
     })();
 
     function getElements(response) {
-      
-      
-      
-      // let allData = JSON.stringify(response);
-      // let test = JSON.parse(response.responseText);
-     
        
       if (response) {
 
-
-        $("#output").html("");
-        print(response);
         console.log(response);
-         
-        $("#heroN").append(`<p> name: ${response.biography.fullName}</p><br>`);
-        $("#powers").append(`<p> <h2> Power Statistics: </h2> </p><br> Strength: ${response.powerstats.strength}</p><br><p>Intelligence: ${response.powerstats.intelligence} <br> <p>Combat Prowess: ${response.powerstats.combat}</p><br><p>Durability: ${response.powerstats.durability}</p><br><p>Power Level: ${response.powerstats.power}</p><br><p>Speed: ${response.powerstats.speed}</p><br>`);
-            // $("#output").append("<p>" +  + ": " +  + "</p><br>")
-            // $("#output").append("<p>" + element[0] + ": " + element[1] + "</p><br>")
-          // $("#hero-info").html(test);
         
+        $("#powers").append("Power Statistics:")
+        $("#heroID").append(`${response.name}`);
+        $("#heroN").append(`Secret Identity: ${response.biography.fullName}`);
+        $("#str").append(`Strength: ${response.powerstats.strength}`);
+        $("#int").append(`Intelligence: ${response.powerstats.intelligence}`);
+        $("#com").append(`Combat Prowess: ${response.powerstats.combat}`);
+        $("#dur").append(`Durability: ${response.powerstats.durability}`);
+        $("#sp").append(`Speed: ${response.powerstats.speed}`);
+        console.log(response.images.xs);
+        $("#image").html(`<img src="${response.images.md}">`);
+
         } else {
           $("#hero-info").html("error");
         }
       
     }
 
-    function print(obj) {
-      for(let i in obj) {
-        if(obj[i] instanceof Object) {
-          print(obj[i]);
-        } else {
+    // function print(obj) {
 
-          $("#output").append(i + ": " + obj[i] + "<br>");
-        }
-      }
-    }
+      // for(let i in obj) {
+      //   if(obj[i] instanceof Object) {
+      //     print(obj[i]);
+      //   } else {
+      //     $("#output").append(i + ": " + obj[i] + "<br>");
+      //   }
+      // }
+    //}
   });
 });
 // response.name
