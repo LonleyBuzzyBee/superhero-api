@@ -1,14 +1,33 @@
 body {
     display: flex !important;
+    background-image: linear-gradient(to right,#750808,#cc1212,#ff8282,#fac0c0,#c1c3d3,#c5d3fc,#94afff);
 }
+.container{
+margin-top: 5%;
+margin-bottom: 5%;
+}
+.container2 {
+  text-align: center;
+  background-color: #dfe7eb;
+  opacity: .9;
+  box-shadow: 5px 5px 5px #757778;
+  padding: 4%;
+  border-radius: 10px;
+}
+#move {
+  text-align: left;
+}
+
 .card {
   margin-top: 5%;
   display: none;
+  box-shadow: 5px 5px 5px #757778;
+  background-image: linear-gradient(to bottom ,#dfe7eb, #fafdff);
 }
-.output {
-    
-  
+.progress {
+
+  margin-bottom: 2%;
 }
-#image {
-  
+button {
+  margin-top: 3%;
 }
