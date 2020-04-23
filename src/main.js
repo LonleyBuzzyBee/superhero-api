@@ -1,4 +1,5 @@
 import 'bootstrap';
+import swal from 'sweetalert2';
 import { SuperHero } from './../src/superhero.js';
 import $ from 'jquery';
 import './style.css';
@@ -12,6 +13,7 @@ $(document).ready(function () {
     $("#heroID").html("");
     $("#aliases").html("");
     $("#publisher").html("");
+    $("#location").html("");
     $("#first").html("");
     $("#family").html("");
     $("#strLabel").html("");
@@ -24,12 +26,16 @@ $(document).ready(function () {
       let hero = new SuperHero();
       const response = await hero.getSuperHeroInfo(name);
       getElements(response);
-      $(".card").show();
     })();
 
     function getElements(response) {
 
-      if (response) {
+      if (!Object.keys(response).length) {
+        $(".card").hide();
+        swal.fire("Sorry Character not found.Search a new hero.");
+
+      }
+      else if (response) {
 
         console.log(response);
 
@@ -59,6 +65,7 @@ $(document).ready(function () {
         $("#sp").append(`<strong>Speed:</strong> ${response.powerstats.speed}`);
         console.log(response.images.xs);
         $("#image").html(`<img src="${response.images.md}">`);
+        $(".card").show();
 
       } else {
         $("#hero-info").html("error");

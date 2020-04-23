@@ -30,4 +30,14 @@ margin-bottom: 5%;
 }
 button {
   margin-top: 3%;
+  cursor: pointer;
+
+}
+button:hover{
+  background-color: #d8e2f2;
+}
+button:active {
+background-color: #d8e2f2;
+box-shadow: 0 4px #556070;
+transform:translate(4px);
 }
