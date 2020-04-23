@@ -10,6 +10,10 @@ $(document).ready(function () {
     $("#name").val("");
     $("#heroN").html("");
     $("#heroID").html("");
+    $("#aliases").html("");
+    $("#publisher").html("");
+    $("#first").html("");
+    $("#family").html("");
     $("#strLabel").html("");
     $("#intLabel").html("");
     $("#comLabel").html("");
@@ -31,27 +35,28 @@ $(document).ready(function () {
 
         $("#strBar").css("width", `${response.powerstats.strength}%`);
 
-        $("#powers").append("Power Statistics:");
+        $("#powers").append("<strong><h4>Power Statistics:</h4></strong>");
         $("#heroID").append(`${response.name}`);
-        $("#heroN").append(`Secret Identity: ${response.biography.fullName}`);
-        $("#aliases").append(`Aliases: ${response.biography.aliases.toString().replace(/,/g, ", ")}`)
-        $("#publisher").append(`Publisher: ${response.biography.publisher}`)
-        $("#first").append(`First Appearance: ${response.biography.firstAppearance}`)
-        $("#family").append(`Relatives: ${response.connections.relatives}`)
+        $("#heroN").append(`<strong>Secret Identity:</strong> ${response.biography.fullName}`);
+        $("#aliases").append(`<strong>Aliases:</strong> ${response.biography.aliases.toString().replace(/,/g, ", ")}`)
+        $("#location").append(`<strong>Location:</strong> ${response.work.base}`)
+        $("#publisher").append(`<strong>Publisher:</strong> ${response.biography.publisher}`)
+        $("#first").append(`<strong>First Appearance:</strong> ${response.biography.firstAppearance}`)
+        $("#family").append(`<strong>Relatives:</strong> ${response.connections.relatives}`)
         $("#strBar").css("width", `${response.powerstats.strength}%`);
-        $("#strLabel").append(`Strength: ${response.powerstats.strength}`);
+        $("#strLabel").append(`<strong>Strength:</strong> ${response.powerstats.strength}`);
         $("#intBar").css("width", `${response.powerstats.intelligence}%`);
-        $("#intLabel").append(`Intelligence: ${response.powerstats.intelligence}`);
+        $("#intLabel").append(`<strong>Intelligence:</strong> ${response.powerstats.intelligence}`);
         $("#comBar").css("width", `${response.powerstats.combat}%`);
-        $("#comLabel").append(`Combat: ${response.powerstats.combat}`);
+        $("#comLabel").append(`<strong>Combat Prowess:</strong> ${response.powerstats.combat}`);
         $("#durBar").css("width", `${response.powerstats.durability}%`);
-        $("#durLabel").append(`Durability: ${response.powerstats.durability}`);
+        $("#durLabel").append(`<strong>Durability:</strong> ${response.powerstats.durability}`);
         $("#spBar").css("width", `${response.powerstats.speed}%`);
-        $("#spLabel").append(`Speeed: ${response.powerstats.speed}`);
-        $("#com").append(`Combat Prowess: ${response.powerstats.combat}`);
+        $("#spLabel").append(`<strong>Speed:</strong> ${response.powerstats.speed}`);
+        $("#com").append(`<strong>Combat Prowess:</strong> ${response.powerstats.combat}`);
 
-        $("#dur").append(`Durability: ${response.powerstats.durability}`);
-        $("#sp").append(`Speed: ${response.powerstats.speed}`);
+        $("#dur").append(`<strong>Durability:</strong> ${response.powerstats.durability}`);
+        $("#sp").append(`<strong>Speed:</strong> ${response.powerstats.speed}`);
         console.log(response.images.xs);
         $("#image").html(`<img src="${response.images.md}">`);
 
