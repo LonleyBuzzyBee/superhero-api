@@ -24,6 +24,9 @@ margin-bottom: 5%;
   box-shadow: 5px 5px 5px #757778;
   background-image: linear-gradient(to bottom ,#dfe7eb, #fafdff);
 }
+#gif-here{
+  margin-top: 3%;
+}
 .progress {
 
   margin-bottom: 2%;

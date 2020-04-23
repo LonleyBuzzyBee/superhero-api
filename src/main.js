@@ -1,12 +1,37 @@
 import 'bootstrap';
 import swal from 'sweetalert2';
 import { SuperHero } from './../src/superhero.js';
+import { GifHere } from './../src/gif.js';
 import $ from 'jquery';
 import './style.css';
 
 $(document).ready(function () {
+  (async () => {
+    let gifHere = new GifHere();
+    const response2 = await gifHere.getGiphyInfo();
+    getElements2(response2);
+
+    function getElements2(response2) {
+      console.log(response2);
+      $("#gif-here").append(`<img src=${response2.data.image_original_url} alt='gif-here'>`);
+    }
+  })();
+
   $("#form").submit(function (event) {
     event.preventDefault();
+
+    // (async () => {
+    //   let gifHere = new GifHere();
+    //   const response2 = await gifHere.getGiphyInfo();
+    //   getElements2(response2);
+
+    //   function getElements2(response2) {
+    //     // ${response2.data[0].images.original.url}
+    //     console.log(response2);
+    //     $("#gif-here").append(`<img src=${response2.data.image_original_url} alt='gif-here'>`);
+    //   }
+    // })();
+
     const name = $("#name").val();
     $("#name").val("");
     $("#heroN").html("");
@@ -44,11 +69,11 @@ $(document).ready(function () {
         $("#powers").append("<strong><h4>Power Statistics:</h4></strong>");
         $("#heroID").append(`${response.name}`);
         $("#heroN").append(`<strong>Secret Identity:</strong> ${response.biography.fullName}`);
-        $("#aliases").append(`<strong>Aliases:</strong> ${response.biography.aliases.toString().replace(/,/g, ", ")}`)
-        $("#location").append(`<strong>Location:</strong> ${response.work.base}`)
-        $("#publisher").append(`<strong>Publisher:</strong> ${response.biography.publisher}`)
-        $("#first").append(`<strong>First Appearance:</strong> ${response.biography.firstAppearance}`)
-        $("#family").append(`<strong>Relatives:</strong> ${response.connections.relatives}`)
+        $("#aliases").append(`<strong>Aliases:</strong> ${response.biography.aliases.toString().replace(/,/g, ", ")}`);
+        $("#location").append(`<strong>Location:</strong> ${response.work.base}`);
+        $("#publisher").append(`<strong>Publisher:</strong> ${response.biography.publisher}`);
+        $("#first").append(`<strong>First Appearance:</strong> ${response.biography.firstAppearance}`);
+        $("#family").append(`<strong>Relatives:</strong> ${response.connections.relatives}`);
         $("#strBar").css("width", `${response.powerstats.strength}%`);
         $("#strLabel").append(`<strong>Strength:</strong> ${response.powerstats.strength}`);
         $("#intBar").css("width", `${response.powerstats.intelligence}%`);
